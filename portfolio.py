@@ -15,26 +15,26 @@ class Stock:
 #portfolio    
 class Portfolio:
     def __init__(self):                                                 #initializer for stock list
-        self.portfolio = []
+        self.stocks = []
     
-    def add_stocks(self, stock):                                        #add stocks to the list                    
-        self.portfolio.append(stock)
+    def add_stock(self, stock):                                         #add stocks to the list                    
+        self.stocks.append(stock)
     
     def calculate_total_loss(self):                                     #total loss
         loss = 0
-        for stock in self.portfolio:
+        for stock in self.stocks:
             loss += stock.profit_loss()
         return loss
 
     def calculate_total_value(self):                                    #total gain
         profit = 0
-        for stock in self.portfolio:
+        for stock in self.stocks:
             profit += stock.market_value()
         return profit
     
     def categorize_stock(self):                                         #sorting/organizing stocks
         different_stocks = {}                                           #library for org
-        for stock in self.portfolio:
+        for stock in self.stocks:
             if stock.symbol not in different_stocks:
                 different_stocks[stock.symbol] = {
                     "shares" : stock.quantity,                          #sorts by name and puts in amount of one specific stock and the total value for that stock that we own
